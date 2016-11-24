@@ -1,0 +1,110 @@
+// vote variables
+
+$vote-width: 36px;
+$vote-radius: 3px;
+$gray10: #e5e5e5;
+$gray15: #d9d9d9;
+$gray20: #ccc;
+$vote-focus: #85bffd;
+
+
+// vote styles
+
+.vote {
+  width: $vote-width * 2;
+  height: $vote-width;
+  margin: 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+
+.vote__item {
+  position: relative;
+  float: left;
+  width: $vote-width;
+  height: $vote-width;
+  margin: 0;
+  padding: 0;
+}
+
+.vote__control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $vote-width;
+  height: $vote-width;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.vote__content {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  width: 1px;
+  height: 1px;
+  border: 0;
+  margin: -1px;
+  padding: 0;
+}
+
+.vote__label {
+  position: relative;
+  display: block;
+  width: $vote-width;
+  height: $vote-width;
+  border: 1px solid $gray20;
+  margin: 0;
+  cursor: pointer;
+  cursor: pointer;
+  color: transparent;
+  background-color: #fff;
+  background-image: url(../img/vote.svg);
+  background-repeat: no-repeat;
+  background-size: ($vote-width * 2) ($vote-width * 2);
+}
+
+.vote__label--upvote {
+  border-radius: $vote-radius 0 0 $vote-radius;
+  background-position: 0 0;
+}
+
+.vote__label--downvote {
+  border-radius: 0 $vote-radius $vote-radius 0;
+  background-position: 0 (-$vote-width);
+  border-left: 0;
+}
+
+.vote__control:focus + .vote__label,
+.vote__control:hover + .vote__label,
+.vote__control:disabled + .vote__label,
+.vote__control:checked:focus + .vote__label,
+.vote__control:checked:hover + .vote__label {
+  background-color: $gray10;
+}
+
+
+.vote__control:focus + .vote__label {
+  z-index: 2;
+  outline: 2px solid $vote-focus;
+  box-shadow: 0 0 8px $vote-focus;
+}
+
+
+.vote__control:checked + .vote__label--upvote {
+  background-position: -36px 0;
+}
+
+.vote__control:checked + .vote__label--downvote {
+  background-position: -36px -36px;
+}
+
+.vote__control:disabled {
+  cursor: not-allowed;
+}
+
+.vote__control:disabled + .vote__label {
+  cursor: not-allowed;
+  opacity: .7;
+}
